@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 
-namespace Tag;
+namespace Token.Module;
 
-public interface ITokenTag
+public interface ITokenModule
 {
     Task ConfigureServicesAsync(IServiceCollection context);
 
