@@ -41,7 +41,7 @@ public static class ServiceCollectionApplicationExtensions
     /// 初始化Application
     /// </summary>
     /// <param name="app"></param>
-    public static async Task InitializeApplication(this IApplicationBuilder app)
+    public static  void InitializeApplication(this IApplicationBuilder app)
     {
         var tag = app.ApplicationServices.GetService<List<ITokenModule>>();
 
