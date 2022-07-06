@@ -1,37 +1,26 @@
 # TokenModule
 
-#### 介绍
+## 介绍
 模块注入模块引用
 设计灵感来源于ABPModule，简化了很多没有必要的依赖，可自动扩展工具
 
-#### 软件架构
-软件架构说明
+## 使用教程
+```csharp
 
+using Token.Module.Extensions;
+using NetCoreTest;
 
-#### 安装教程
+var builder = WebApplication.CreateBuilder(args);
+// 执行这一步的时候就会先执行NetCoreTestModule里面的 ConfigureService方法，
+// 执行顺序ConfigureServicesAsync =》ConfigureService方法
+// 如果NetCoreTestModule中使用了[DependOn(typeof(其他的Module))] 这样就可以按照传入顺序一并执行
+builder.Services.AddTagApplication<NetCoreTestModule>();
+var app = builder.Build();
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+// 执行这一步的时候就会先执行NetCoreTestModule里面的 OnApplicationShutdown，
+// OnApplicationShutdownAsync =》OnApplicationShutdown方法
+app.InitializeApplication();
 
-#### 使用说明
+app.Run();
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)

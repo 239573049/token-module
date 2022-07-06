@@ -3,7 +3,7 @@
 namespace Token.Module.Attributes;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-public class DependOnAttribute:Attribute 
+public class DependOnAttribute : Attribute
 {
     public Type[] Type { get; }
 

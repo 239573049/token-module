@@ -14,17 +14,17 @@ public static class ServiceCollectionApplicationExtensions
     /// 初始化Service
     /// </summary>
     /// <param name="services"></param>
-    /// <typeparam name="TTag"></typeparam>
-    public static async Task AddTagApplication<TTag>(this IServiceCollection services) where TTag : ITokenModule
+    /// <typeparam name="TModule"></typeparam>
+    public static async Task AddTagApplication<TModule>(this IServiceCollection services) where TModule : ITokenModule
     {
         var types = new List<ITokenModule>();
-        var type = typeof(TTag);
+        var type = typeof(TModule);
         var attributes = type.GetCustomAttributes().OfType<Token.Module.Attributes.DependOnAttribute>()
                              .SelectMany(x => x.Type);
 
-        var tag = type.Assembly.CreateInstance(type.FullName, true) as ITokenModule;
-        types.Add(tag);
-        await tag.ConfigureServicesAsync(services);
+        var module = type.Assembly.CreateInstance(type.FullName, true) as ITokenModule;
+        types.Add(module);
+        await module.ConfigureServicesAsync(services);
         foreach (var t in attributes)
         {
             if (t.Assembly.CreateInstance(t.FullName, true) is not ITokenModule ts)
