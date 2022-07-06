@@ -1,15 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
       <ProjectReference Include="..\..\src\Token.Module\Token.Module.csproj" />
-      <ProjectReference Include="..\NetCore.Application\NetCore.Application.csproj" />
-      <ProjectReference Include="..\NetCore.HttpApi\NetCore.HttpApi.csproj" />
+      <ProjectReference Include="..\NetCore.Domain\NetCore.Domain.csproj" />
     </ItemGroup>
 
 </Project>

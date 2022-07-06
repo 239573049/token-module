@@ -14,12 +14,13 @@ public static class ServiceCollectionApplicationExtensions
     /// 初始化Service
     /// </summary>
     /// <param name="services"></param>
+    /// <param name="isAutoInject">是否自动依赖注入</param>
     /// <typeparam name="TModule"></typeparam>
-    public static async Task AddTagApplication<TModule>(this IServiceCollection services) where TModule : ITokenModule
+    public static async Task AddTagApplication<TModule>(this IServiceCollection services,bool isAutoInject=true) where TModule : ITokenModule
     {
         var types = new List<ITokenModule>();
         var type = typeof(TModule);
-        var attributes = type.GetCustomAttributes().OfType<Token.Module.Attributes.DependOnAttribute>()
+        var attributes = type.GetCustomAttributes().OfType<DependOnAttribute>()
                              .SelectMany(x => x.Type);
 
         var module = type.Assembly.CreateInstance(type.FullName, true) as ITokenModule;
@@ -33,8 +34,11 @@ public static class ServiceCollectionApplicationExtensions
             types.Add(ts);
             await ts.ConfigureServicesAsync(services);
         }
-
         services.AddSingleton(types);
+        if (isAutoInject)
+        {
+            services.AddAutoInject(types);
+        }
     }
 
     /// <summary>
