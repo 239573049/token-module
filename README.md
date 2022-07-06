@@ -37,8 +37,11 @@ app.Run();
 
 // 如果没有取消自动注入的话，您只需要在实现类继承相应的接口即可
 // 接口的名字和实现类型的名字必须基本一致，接口多加I其他的名字必须一致
+
 IScopedDependency => services.AddScoped();
+
 ISingletonDependency => service.AddSingleton();
+
 ITransientDependency => service.AddTransient();
 
 ### 示例

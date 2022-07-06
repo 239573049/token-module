@@ -5,7 +5,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NetCore.Domain;
 using Token.Module;
-using Token.Module.Extensions;
 
 namespace NetCore.HttpApi;
 
@@ -78,7 +77,7 @@ public class NetCoreHttpApiModule : TokenModule
 
     private void UseSwagger(IApplicationBuilder app)
     {
-        var env = app.GetEnvironment();
+        var env = app.ApplicationServices.GetService<IWebHostEnvironment>();
         
         if (env.IsDevelopment())
         {
