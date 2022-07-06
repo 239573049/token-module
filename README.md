@@ -1,5 +1,8 @@
 # TokenModule
 
+[![NuGet](https://img.shields.io/nuget/dt/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)
+[![NuGet](https://img.shields.io/nuget/v/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)
+
 ## 介绍
 模块注入模块引用
 设计灵感来源于ABPModule，简化了很多没有必要的依赖，可自动扩展工具
