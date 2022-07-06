@@ -15,28 +15,11 @@ public class NetCoreApplicationModule:TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        ConfigCors(services);
+        
     }
 
-    private void ConfigCors(IServiceCollection services)
-    {
-        services.AddCors(options =>
-        {
-            options.AddPolicy(Constant.Cors, corsBuilder =>
-            {
-                corsBuilder.SetIsOriginAllowed((string _) => true).AllowAnyMethod().AllowAnyHeader()
-                    .AllowCredentials();
-            });
-        });
-    }
-    
     public override void OnApplicationShutdown(IApplicationBuilder app)
     {
-        UseCors(app);
     }
 
-    private void UseCors(IApplicationBuilder app)
-    {
-        app.UseCors(Constant.Cors);
-    }
 }
