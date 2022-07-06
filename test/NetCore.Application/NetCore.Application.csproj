@@ -8,6 +8,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\Token.Module\Token.Module.csproj" />
+      <ProjectReference Include="..\NetCore.Application.Contracts\NetCore.Application.Contracts.csproj" />
+      <ProjectReference Include="..\NetCore.Domain\NetCore.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
     </ItemGroup>
 
 </Project>

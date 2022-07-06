@@ -10,10 +10,10 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageReleaseNotes>模块注入模块引用
-设计灵感来源于ABPModule，简化了很多没有必要的依赖，可自动扩展工具</PackageReleaseNotes>
+        <PackageReleaseNotes>增加主动依赖注入自动化，
+</PackageReleaseNotes>
         <PackageIcon>logo.png</PackageIcon>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.1.0</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
