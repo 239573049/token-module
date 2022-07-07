@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NetCore.Domain;
 using Token.Module;
+using Token.Module.Attributes;
 
 namespace NetCore.HttpApi;
 
@@ -16,6 +17,7 @@ public class NetCoreHttpApiModule : TokenModule
         ConfigCors(services);
     }
 
+    
     private void ConfigCors(IServiceCollection services)
     {
         services.AddCors(options =>

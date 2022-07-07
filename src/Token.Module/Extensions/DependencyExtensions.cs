@@ -12,11 +12,12 @@ public static class DependencyExtensions
         var assemblies = tokenModules.Select(x => x.GetType().Assembly).Distinct()
             .SelectMany(x => x.GetTypes());
 
+        // 过滤程序集
         var types = assemblies
             .Where(type => typeof(ISingletonDependency).IsAssignableFrom(type) ||
                            typeof(IScopedDependency).IsAssignableFrom(type) ||
                            typeof(ITransientDependency).IsAssignableFrom(type));
-
+        // 注入
         foreach (var t in types)
         {
             var interfaces = t.GetInterfaces().Where(x => x.Name.EndsWith(t.Name))?.FirstOrDefault();
