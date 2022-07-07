@@ -51,14 +51,12 @@ public static class ServiceCollectionApplicationExtensions
         var attributes = type.GetCustomAttributes().OfType<DependOnAttribute>()
             .SelectMany(x => x.Type).Where(x=>iTokenModule.IsAssignableFrom(x));
         
-
         foreach (var t in attributes)
         {
             ITokenModule module = t.Assembly.CreateInstance(t?.FullName, true) as ITokenModule;
             if(module==null)
                 continue;
 
-            types.Add(module);
             // 可能存在循环依赖的问题
             await GetModuleTypeAsync(t, types);
         }
