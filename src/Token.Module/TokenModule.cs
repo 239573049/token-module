@@ -1,13 +1,17 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
+using System;
 
 namespace Token.Module;
 
-public abstract class TokenModule:ITokenModule
+public abstract class TokenModule : ITokenModule
 {
+    private IServiceCollection _serviceCollection;
+    
     public virtual Task ConfigureServicesAsync(IServiceCollection services)
     {
+        _serviceCollection = services;
         ConfigureServices(services);
         return Task.CompletedTask;
     }
@@ -25,4 +29,10 @@ public abstract class TokenModule:ITokenModule
     public virtual void OnApplicationShutdown(IApplicationBuilder app)
     {
     }
+
+    protected void Configure<TOptions>(Action<TOptions> configureOptions) where TOptions : class =>
+        _serviceCollection.Configure(configureOptions);
+
+    protected void Configure<TOptions>(string name, Action<TOptions> configureOptions) where TOptions : class =>
+        _serviceCollection.Configure(name, configureOptions);
 }

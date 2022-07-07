@@ -12,7 +12,6 @@ public class NetCoreTestModule :TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        
     }
 
     public override void OnApplicationShutdown(IApplicationBuilder app)
