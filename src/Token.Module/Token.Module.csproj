@@ -10,9 +10,9 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageReleaseNotes>新增Configure方法</PackageReleaseNotes>
+        <PackageReleaseNotes>修复Configure无法问题</PackageReleaseNotes>
         <PackageIcon>logo.png</PackageIcon>
-        <PackageVersion>1.1.6</PackageVersion>
+        <PackageVersion>1.1.7</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>

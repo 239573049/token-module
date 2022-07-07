@@ -8,17 +8,10 @@ namespace Token.Module;
 public abstract class TokenModule : ITokenModule
 {
     private IServiceCollection _serviceCollection;
-
-    private IServiceCollection ServiceCollection
-    {
-        get => this._serviceCollection != null
-                   ? this._serviceCollection
-                   : throw new Exception("在启动模块的时候ServiceCollection为空");
-        set => this._serviceCollection = value;
-    }
-
+    
     public virtual Task ConfigureServicesAsync(IServiceCollection services)
     {
+        _serviceCollection = services;
         ConfigureServices(services);
         return Task.CompletedTask;
     }
@@ -38,8 +31,8 @@ public abstract class TokenModule : ITokenModule
     }
 
     protected void Configure<TOptions>(Action<TOptions> configureOptions) where TOptions : class =>
-        ServiceCollection.Configure(configureOptions);
+        _serviceCollection.Configure(configureOptions);
 
     protected void Configure<TOptions>(string name, Action<TOptions> configureOptions) where TOptions : class =>
-        ServiceCollection.Configure(name, configureOptions);
+        _serviceCollection.Configure(name, configureOptions);
 }

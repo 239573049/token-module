@@ -6,11 +6,11 @@ namespace Token.Module;
 
 public interface ITokenModule
 {
-    Task ConfigureServicesAsync(IServiceCollection context);
+    Task ConfigureServicesAsync(IServiceCollection services);
 
-    void ConfigureServices(IServiceCollection context);
+    void ConfigureServices(IServiceCollection services);
     
-    Task OnApplicationShutdownAsync(IApplicationBuilder context);
+    Task OnApplicationShutdownAsync(IApplicationBuilder app);
 
-    void OnApplicationShutdown(IApplicationBuilder context);
+    void OnApplicationShutdown(IApplicationBuilder app);
 }
