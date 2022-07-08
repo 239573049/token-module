@@ -10,9 +10,9 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageReleaseNotes>修复子模块循环注入问题</PackageReleaseNotes>
+        <PackageReleaseNotes>新增模块执行顺序实现</PackageReleaseNotes>
         <PackageIcon>logo.png</PackageIcon>
-        <PackageVersion>1.1.9</PackageVersion>
+        <PackageVersion>1.2.0</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
