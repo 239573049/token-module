@@ -19,10 +19,10 @@ var builder = WebApplication.CreateBuilder(args);
 // 执行顺序ConfigureServicesAsync =》ConfigureService方法
 // 如果NetCoreTestModule中使用了[DependOn(typeof(其他的Module))] 这样就可以按照传入顺序一并执行
 // 默认自动依赖注入继承指定依赖生命周期的接口
-builder.Services.AddTagApplication<NetCoreTestModule>();
+builder.Services.AddModuleApplication<NetCoreTestModule>();
 
 // 这样将不会自动依赖注入
-builder.Services.AddTagApplication<NetCoreTestModule>(false);
+builder.Services.AddModuleApplication<NetCoreTestModule>(false);
 
 var app = builder.Build();
 
