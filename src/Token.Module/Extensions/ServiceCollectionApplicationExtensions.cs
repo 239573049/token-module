@@ -37,8 +37,7 @@ public static class ServiceCollectionApplicationExtensions
 
     private static async Task GetModuleTypeAsync(Type type,List<ITokenModule> types)
     {
-        var iTokenModule = typeof(ITokenModule);
-        if (!iTokenModule.IsAssignableFrom(type))
+        if (!type.IsAssignableFrom<ITokenModule>())
         {
             return;
         }
@@ -49,7 +48,7 @@ public static class ServiceCollectionApplicationExtensions
 
         // 获取DependOn特性注入的模块
         var attributes = type.GetCustomAttributes().OfType<DependOnAttribute>()
-            .SelectMany(x => x.Type).Where(x=>iTokenModule.IsAssignableFrom(x));
+            .SelectMany(x => x.Type).Where(x=>x.IsAssignableFrom<ITokenModule>());
         
 
         foreach (var t in attributes)

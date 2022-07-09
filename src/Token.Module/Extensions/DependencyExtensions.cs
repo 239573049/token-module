@@ -24,30 +24,30 @@ public static class DependencyExtensions
 
             if (interfaces != null)
             {
-                if (typeof(ITransientDependency).IsAssignableFrom(t))
+                if (t.IsAssignableFrom<ITransientDependency>())
                 {
                     services.AddTransient(interfaces, t);
                 }
-                else if (typeof(IScopedDependency).IsAssignableFrom(t))
+                else if (t.IsAssignableFrom<IScopedDependency>())
                 {
                     services.AddScoped(interfaces, t);
                 }
-                else if (typeof(ISingletonDependency).IsAssignableFrom(t))
+                else if (t.IsAssignableFrom<ISingletonDependency>())
                 {
                     services.AddSingleton(interfaces, t);
                 }
             }
             else
             {
-                if (typeof(ITransientDependency).IsAssignableFrom(t))
+                if (t.IsAssignableFrom<ITransientDependency>())
                 {
                     services.AddTransient(t);
                 }
-                else if (typeof(IScopedDependency).IsAssignableFrom(t))
+                else if (t.IsAssignableFrom<IScopedDependency>())
                 {
                     services.AddScoped(t);
                 }
-                else if (typeof(ISingletonDependency).IsAssignableFrom(t))
+                else if (t.IsAssignableFrom<ISingletonDependency>())
                 {
                     services.AddSingleton(t);
                 }
