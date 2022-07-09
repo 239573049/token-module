@@ -11,7 +11,7 @@ public abstract class TokenModule : ITokenModule
     
     public virtual Task ConfigureServicesAsync(IServiceCollection services)
     {
-        _serviceCollection = services;
+        _serviceCollection = services ?? throw new ArgumentNullException(nameof(services));
         ConfigureServices(services);
         return Task.CompletedTask;
     }
