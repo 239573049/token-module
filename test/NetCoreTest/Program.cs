@@ -4,7 +4,7 @@ using NetCoreTest;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddTagApplication<NetCoreTestModule>();
+builder.Services.AddModuleApplication<NetCoreTestModule>();
 var app = builder.Build();
 
 app.InitializeApplication();
