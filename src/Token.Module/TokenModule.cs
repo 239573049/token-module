@@ -8,7 +8,7 @@ namespace Token.Module;
 public abstract class TokenModule : ITokenModule
 {
     private IServiceCollection _serviceCollection;
-    
+
     public virtual Task ConfigureServicesAsync(IServiceCollection services)
     {
         _serviceCollection = services ?? throw new ArgumentNullException(nameof(services));

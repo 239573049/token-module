@@ -7,7 +7,7 @@ namespace Token.Module.Extensions;
 
 public static class DependencyExtensions
 {
-    public static void AddAutoInject(this IServiceCollection services, List<ITokenModule> tokenModules)
+    public static void AddAutoInject(this IServiceCollection services, IEnumerable<ITokenModule> tokenModules)
     {
         var assemblies = tokenModules.Select(x => x.GetType().Assembly).Distinct()
             .SelectMany(x => x.GetTypes());
