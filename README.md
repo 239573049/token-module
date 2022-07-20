@@ -3,6 +3,7 @@
 
 [![NuGet](https://img.shields.io/nuget/dt/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)
 [![NuGet](https://img.shields.io/nuget/v/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)
+
 2. MAUI 的Module
 
 [![NuGet](https://img.shields.io/nuget/dt/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)
