@@ -41,8 +41,7 @@ public static class ServiceCollectionApplicationExtensions
         {
             services.AddAutoInject(tokenModules);
         }
-
-
+        
         foreach (var t in tokenModules)
         {
             await t.ConfigureServicesAsync(services);

@@ -80,9 +80,8 @@ public static class ServiceCollectionApplicationExtensions
         if (typeInstance != null) types.Add(new Tuple<IMauiModule, int>(typeInstance, GetRunOrder(type)));
 
         // 获取DependOn特性注入的模块
-        var attributes = type.GetCustomAttributes().OfType<DependsOnAttribute>()
-            .SelectMany(x => x.Type).Where(x=>x.IsAssignableFrom<DependsOnAttribute>());
-        
+        var attributes = type.GetCustomAttributes().OfType<DependOnAttribute>()
+            .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom<IMauiModule>());
 
         foreach (var t in attributes)
         {

@@ -7,9 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\Token.EventBus\Token.EventBus.csproj" />
       <ProjectReference Include="..\..\src\Token.Module\Token.Module.csproj" />
-      <ProjectReference Include="..\NetCore.Application\NetCore.Application.csproj" />
-      <ProjectReference Include="..\NetCore.HttpApi\NetCore.HttpApi.csproj" />
     </ItemGroup>
 
 </Project>

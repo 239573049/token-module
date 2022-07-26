@@ -18,6 +18,8 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
+        <PackageVersion>1.0.4</PackageVersion>
+        <PackageReleaseNotes>修复在Winfrom中无法获取到特性问题</PackageReleaseNotes>
     </PropertyGroup>
 
 </Project>

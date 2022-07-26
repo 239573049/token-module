@@ -1,14 +1,15 @@
-using Token.Module.Extensions;
+
 using NetCoreTest;
+using Token.Module.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddModuleApplication<NetCoreTestModule>();
+await builder.Services.AddModuleApplication<NetCoreTestModule>();
 var app = builder.Build();
 
-app.InitializeApplication();
-
 app.MapControllers();
+
+app.InitializeApplication();
 
 app.Run();
