@@ -11,7 +11,7 @@
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/239573049/token-module</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>

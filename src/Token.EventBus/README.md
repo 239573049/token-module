@@ -21,12 +21,12 @@ services.AddEventBus();
 // 获取事件总线的接口
 var distributedEventBus = services.GetService<IDistributedEventBus>();
 // 定义字符串类型的事件总线处理方法
-distributedEventBus?.Subscribe((string data) =>
+distributedEventBus?.Subscribe<string>("key",(data) =>
 {
     Console.WriteLine(data);
 });
 string data = "测试";
 // 提交字符串事件总线任务
-distributedEventBus?.PublishAsync(data);
+distributedEventBus?.PublishAsync("key",data);
 
 ```
