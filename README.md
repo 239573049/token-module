@@ -8,6 +8,9 @@
 
 [![NuGet](https://img.shields.io/nuget/dt/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)
 [![NuGet](https://img.shields.io/nuget/v/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)
+## 其他模块
+
+[事件总线](./src/Token.EventBus/README.md)
 
 ## 介绍
 模块注入模块引用
