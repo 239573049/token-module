@@ -6,20 +6,20 @@ using Token.Module.Extensions;
 namespace NetCoreTest;
 
 [RunOrder(1)]
-public class NetCoreTestModule :TokenModule
+public class NetCoreTestModule : TokenModule
 {
-    public override void ConfigureServices(IServiceCollection services)
+
+    public override async Task ConfigureServicesAsync(IServiceCollection services)
     {
-        services.AddEventBus();
         
+        services.AddEventBus();
         var distributedEventBus = services.GetService<IDistributedEventBus>();
-        distributedEventBus?.Subscribe((string data) =>
+        await distributedEventBus?.Subscribe<string>("张飞", (x) =>
         {
-            Console.WriteLine(data);
-        });
+            Console.WriteLine(x);
+        })!;
 
-        string data = "测试";
-        distributedEventBus?.PublishAsync(data);
+        var data = "dasd";
+        distributedEventBus?.PublishAsync<string>("张飞",data);
     }
-
 }

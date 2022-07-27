@@ -2,9 +2,9 @@ namespace Token.EventBus;
 
 public interface IDistributedEventBus
 {
-    IDisposable Subscribe<TEvent>(Action<TEvent> handler) where TEvent : class;
+    Task Subscribe<TEvent>(string name, Action<object> action) where TEvent : class;
 
-    IDisposable Subscribe(Action<object> handler);
-    
-    Task PublishAsync<TEvent>(TEvent eventData) where TEvent : class;
+    Task Subscribe(string name,Action<object> action);
+
+    Task PublishAsync<TEvent>(string name, TEvent eventData) where TEvent : class;
 }
