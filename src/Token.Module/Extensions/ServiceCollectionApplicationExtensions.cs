@@ -42,12 +42,13 @@ public static class ServiceCollectionApplicationExtensions
             services.AddAutoInject(tokenModules);
         }
         
+        services.AddSingleton(types);
+        
         foreach (var t in tokenModules)
         {
             await t.ConfigureServicesAsync(services);
         }
 
-        services.AddSingleton(types);
     }
 
     /// <summary>

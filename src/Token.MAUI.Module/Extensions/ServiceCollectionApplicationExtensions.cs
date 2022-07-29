@@ -51,7 +51,7 @@ public static class ServiceCollectionApplicationExtensions
     /// <param name="app"></param>
     public static void InitializeApplication(this MauiApp app)
     {
-        
+
         var types = app.Services.GetService<List<Tuple<IMauiModule, int>>>();
 
         var modules = types?.OrderBy(x => x.Item2).Select(x => x.Item1);
@@ -79,19 +79,33 @@ public static class ServiceCollectionApplicationExtensions
 
         if (typeInstance != null) types.Add(new Tuple<IMauiModule, int>(typeInstance, GetRunOrder(type)));
 
-        // 获取DependOn特性注入的模块
-        var attributes = type.GetCustomAttributes().OfType<DependOnAttribute>()
-            .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom<IMauiModule>());
 
-        foreach (var t in attributes)
+        var x = type.CustomAttributes.Select(x => x.AttributeType).Where(x => x == typeof(DependOnAttribute))
+            .OfType<DependOnAttribute>();
+
+        try
         {
-            var module = t.Assembly.CreateInstance(t?.FullName, true) as IMauiModule;
-            if (module == null)
-                continue;
 
-            // 可能存在循环依赖的问题
-            await GetModuleTypeAsync(t, types);
+            // 获取DependOn特性注入的模块
+            var attributes = type.GetCustomAttributes().OfType<DependOnAttribute>()
+                .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom<IMauiModule>());
+
+            foreach (var t in attributes)
+            {
+                var module = t.Assembly.CreateInstance(t?.FullName, true) as IMauiModule;
+                if (module == null)
+                    continue;
+
+                // 可能存在循环依赖的问题
+                await GetModuleTypeAsync(t, types);
+            }
         }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
     }
 
     private static int GetRunOrder(Type type)

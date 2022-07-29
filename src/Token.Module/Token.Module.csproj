@@ -10,9 +10,9 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageReleaseNotes>新增模块执行顺序实现</PackageReleaseNotes>
+        <PackageReleaseNotes>模块注入顺序更换</PackageReleaseNotes>
         <PackageIcon>logo.png</PackageIcon>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>1.2.1</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,6 +30,10 @@
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Helpers" />
     </ItemGroup>
 
 </Project>
