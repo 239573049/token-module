@@ -1,4 +1,4 @@
-namespace Token.EventBus;
+namespace Token.EventBus.KeyEventBus;
 
 public class KeyLocalEventBus<TEvent> : IKeyLocalEventBus<TEvent>
 {

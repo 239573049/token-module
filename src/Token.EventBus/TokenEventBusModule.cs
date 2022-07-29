@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Token.EventBus.EventBus;
 using Token.EventBus.Handlers;
+using Token.EventBus.KeyEventBus;
 using Token.Module;
 
 namespace Token.EventBus;
@@ -10,10 +11,11 @@ public class TokenEventBusModule : TokenModule
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton(typeof(IKeyLocalEventBus<>), typeof(KeyLocalEventBus<>));
-        ConfigureaEvent(services);
+        
+        ConfigureEventBus(services);
     }
 
-    private void ConfigureaEvent(IServiceCollection services)
+    private void ConfigureEventBus(IServiceCollection services)
     {
         var service = services.BuildServiceProvider().GetService<List<Tuple<ITokenModule, int>>>();
 

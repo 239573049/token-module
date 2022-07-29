@@ -10,7 +10,8 @@
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/239573049/token-module</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>1.1.1</PackageVersion>
+        <PackageIcon>logo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
