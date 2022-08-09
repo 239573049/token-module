@@ -10,6 +10,5 @@ public class ModuleTest
         var services = new ServiceCollection();
         await services.AddModuleApplication<TestTokenModule>();
         
-        
     }
 }

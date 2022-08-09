@@ -24,7 +24,7 @@ public class KeyLocalEventBus<TEvent> : IKeyLocalEventBus<TEvent>
     public Task PublishAsync(string name, TEvent eventData)
     {
         var data = _dictionary.FirstOrDefault(x => x.Key == name);
-
+        
         data.Value?.Invoke(eventData);
 
         return Task.CompletedTask;
