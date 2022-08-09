@@ -1,21 +1,15 @@
 # TokenModule
-1. WebApi 的Module
+WebApi 的Module
 
 [![NuGet](https://img.shields.io/nuget/dt/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)
 [![NuGet](https://img.shields.io/nuget/v/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)
 
-2. MAUI 的Module
-
-[![NuGet](https://img.shields.io/nuget/dt/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)
-[![NuGet](https://img.shields.io/nuget/v/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)
 ## 列表模块
 
 | 模块名称                                   | Nuget下载量 | Nuget版本号 |  
 |----------------------------------------|------------| ----------|
 | [事件总线](./src/Token.EventBus/README.md) | [![NuGet](https://img.shields.io/nuget/dt/Token.EventBus.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.EventBus/)|[![NuGet](https://img.shields.io/nuget/v/Token.EventBus.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.EventBus/)|
 | TokenModule                            | [![NuGet](https://img.shields.io/nuget/dt/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)| [![NuGet](https://img.shields.io/nuget/v/Token.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.Module/)|
-| MAUIToken                              | [![NuGet](https://img.shields.io/nuget/dt/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)| [![NuGet](https://img.shields.io/nuget/v/Token.MAUI.Module.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Token.MAUI.Module/)|
-
 
 ## 介绍
 模块注入模块引用
