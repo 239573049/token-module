@@ -63,6 +63,11 @@ public static class DependencyExtensions
         assemblies = null;
     }
 
+    /// <summary>
+    /// 获取注入方法相对应的需要注入的标记
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     private static Type? GetDependencyType(this Type type)
     {
         var exposeServices = type.GetCustomAttribute<ExposeServicesAttribute>();
@@ -70,10 +75,7 @@ public static class DependencyExtensions
         {
             return type.GetInterfaces().Where(x => x.Name.EndsWith(type.Name))?.FirstOrDefault();
         }
-        else
-        {
-            return type.GetInterfaces().Where(x => x == exposeServices.Type)?.FirstOrDefault();
-        }
-
+        
+        return type.GetInterfaces().Where(x => x == exposeServices.Type)?.FirstOrDefault();
     }
 }

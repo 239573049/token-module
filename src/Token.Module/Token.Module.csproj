@@ -12,7 +12,7 @@
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
         <PackageReleaseNotes>模块注入顺序更换</PackageReleaseNotes>
         <PackageIcon>logo.png</PackageIcon>
-        <PackageVersion>1.2.1</PackageVersion>
+        <PackageVersion>1.2.2</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
