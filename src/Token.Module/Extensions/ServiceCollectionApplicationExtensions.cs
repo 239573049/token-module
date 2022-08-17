@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +39,7 @@ public static class ServiceCollectionApplicationExtensions
         var tokenModules = modules as ITokenModule[] ?? modules.ToArray();
         if (isAutoInject)
         {
+            // 启动主动注入
             services.AddAutoInject(tokenModules);
         }
         

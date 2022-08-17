@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Token.Module.Attributes;
 using Token.Module.Dependencys;
 
 namespace Token.Module.Extensions;
@@ -9,6 +12,7 @@ public static class DependencyExtensions
 {
     public static void AddAutoInject(this IServiceCollection services, IEnumerable<ITokenModule> tokenModules)
     {
+        // 加载所有需要注入的程序集（只有引用的模块）
         var assemblies = tokenModules.Select(x => x.GetType().Assembly).Distinct()
             .SelectMany(x => x.GetTypes());
 
@@ -17,10 +21,11 @@ public static class DependencyExtensions
             .Where(type => typeof(ISingletonDependency).IsAssignableFrom(type) ||
                            typeof(IScopedDependency).IsAssignableFrom(type) ||
                            typeof(ITransientDependency).IsAssignableFrom(type));
-        // 注入
+        
+        // 根据继承的接口注入相对应的生命周期
         foreach (var t in types)
         {
-            var interfaces = t.GetInterfaces().Where(x => x.Name.EndsWith(t.Name))?.FirstOrDefault();
+            var interfaces = t.GetDependencyType();
 
             if (interfaces != null)
             {
@@ -56,5 +61,19 @@ public static class DependencyExtensions
 
         types = null;
         assemblies = null;
+    }
+
+    private static Type? GetDependencyType(this Type type)
+    {
+        var exposeServices = type.GetCustomAttribute<ExposeServicesAttribute>();
+        if (exposeServices == null)
+        {
+            return type.GetInterfaces().Where(x => x.Name.EndsWith(type.Name))?.FirstOrDefault();
+        }
+        else
+        {
+            return type.GetInterfaces().Where(x => x == exposeServices.Type)?.FirstOrDefault();
+        }
+
     }
 }

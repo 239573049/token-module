@@ -2,11 +2,10 @@ using System;
 
 namespace Token.Module.Attributes;
 
-
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-public class RunOrderAttribute :Attribute
+public class RunOrderAttribute : Attribute
 {
-    public int Order;
+    public readonly int Order;
 
     public RunOrderAttribute(int order)
     {
