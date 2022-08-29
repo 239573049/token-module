@@ -49,7 +49,6 @@ public static class ServiceCollectionApplicationExtensions
         {
             await t.ConfigureServicesAsync(services);
         }
-
     }
 
     /// <summary>
