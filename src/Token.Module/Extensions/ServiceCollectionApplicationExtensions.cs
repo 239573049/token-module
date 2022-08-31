@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Token.Module.Attributes;
+using Token.Module.Helpers;
 
 namespace Token.Module.Extensions;
 
@@ -30,6 +31,7 @@ public static class ServiceCollectionApplicationExtensions
     public static async Task AddModuleApplication<TModule>(this IServiceCollection services, bool isAutoInject = true)
         where TModule : ITokenModule
     {
+        ServiceProviderHelper.ServiceProvider = services.BuildServiceProvider();
         var types = new List<Tuple<ITokenModule, int>>();
         var type = typeof(TModule);
         await GetModuleTypeAsync(type, types);
