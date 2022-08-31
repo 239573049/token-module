@@ -31,7 +31,7 @@ public static class ServiceCollectionApplicationExtensions
     public static async Task AddModuleApplication<TModule>(this IServiceCollection services, bool isAutoInject = true)
         where TModule : ITokenModule
     {
-        ServiceProviderHelper.ServiceProvider = services.BuildServiceProvider();
+        
         var types = new List<Tuple<ITokenModule, int>>();
         var type = typeof(TModule);
         await GetModuleTypeAsync(type, types);
@@ -59,6 +59,9 @@ public static class ServiceCollectionApplicationExtensions
     /// <param name="app"></param>
     public static void InitializeApplication(this IApplicationBuilder app)
     {
+
+        ServiceProviderHelper.ServiceProvider = app.ApplicationServices;
+        
         var types = app.ApplicationServices.GetService<List<Tuple<ITokenModule, int>>>();
 
         var modules = types?.OrderBy(x => x.Item2).Select(x => x.Item1);
