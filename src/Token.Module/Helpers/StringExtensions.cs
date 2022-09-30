@@ -5,9 +5,9 @@ namespace Token.Module.Helpers;
 /// </summary>
 public static class StringExtensions
 {
-    public static bool IsNullOrEmpty(this string value) =>
+    public static bool IsNullOrEmpty(this string? value) =>
         string.IsNullOrEmpty(value);
 
-    public static bool IsNullOrWhiteSpace(this string value) =>
+    public static bool IsNullOrWhiteSpace(this string? value) =>
         string.IsNullOrWhiteSpace(value);
 }

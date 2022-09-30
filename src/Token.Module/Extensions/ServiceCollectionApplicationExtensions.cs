@@ -59,9 +59,6 @@ public static class ServiceCollectionApplicationExtensions
     /// <param name="app"></param>
     public static void InitializeApplication(this IApplicationBuilder app)
     {
-
-        ServiceProviderHelper.ServiceProvider = app.ApplicationServices;
-        
         var types = app.ApplicationServices.GetService<List<Tuple<ITokenModule, int>>>();
 
         var modules = types?.OrderBy(x => x.Item2).Select(x => x.Item1);
