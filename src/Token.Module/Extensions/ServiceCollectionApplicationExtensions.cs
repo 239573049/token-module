@@ -28,7 +28,7 @@ public static class ServiceCollectionApplicationExtensions
     /// <param name="services"></param>
     /// <param name="isAutoInject">是否自动依赖注入</param>
     /// <typeparam name="TModule"></typeparam>
-    public static async Task AddModuleApplication<TModule>(this IServiceCollection services, bool isAutoInject = true)
+    public static async Task AddModuleApplicationAsync<TModule>(this IServiceCollection services, bool isAutoInject = true)
         where TModule : ITokenModule
     {
         

@@ -10,7 +10,7 @@
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
         <PackageReleaseNotes>新增BusinessException</PackageReleaseNotes>
-        <PackageVersion>1.2.6</PackageVersion>
+        <PackageVersion>1.2.8</PackageVersion>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     </PropertyGroup>
 

@@ -8,7 +8,7 @@ public class ModuleTest
     public async Task StartModule()
     {
         var services = new ServiceCollection();
-        await services.AddModuleApplication<TestTokenModule>();
+        await services.AddModuleApplicationAsync<TestTokenModule>();
         
     }
 }

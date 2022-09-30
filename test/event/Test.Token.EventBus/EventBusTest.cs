@@ -12,7 +12,7 @@ public class EventBusTest
     {
         
         var services = new ServiceCollection();
-        await services.AddModuleApplication<TestTokenEventBusModule>();
+        await services.AddModuleApplicationAsync<TestTokenEventBusModule>();
 
         var eventBus = services.GetService<ILocalEventBus>();
         eventBus?.PublishAsync("data");
