@@ -9,8 +9,8 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/239573049/token-module</PackageProjectUrl>
         <RepositoryUrl>https://github.com/239573049/token-module</RepositoryUrl>
-        <PackageReleaseNotes>新增BusinessException</PackageReleaseNotes>
-        <PackageVersion>1.2.8</PackageVersion>
+        <PackageReleaseNotes>修复抽象类不再扫描</PackageReleaseNotes>
+        <PackageVersion>1.2.9</PackageVersion>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     </PropertyGroup>
 

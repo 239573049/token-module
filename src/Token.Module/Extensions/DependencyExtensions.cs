@@ -18,10 +18,8 @@ public static class DependencyExtensions
 
         // 过滤程序集
         var types = assemblies
-            .Where(type => typeof(ISingletonDependency).IsAssignableFrom(type) ||
-                           typeof(IScopedDependency).IsAssignableFrom(type) ||
-                           typeof(ITransientDependency).IsAssignableFrom(type));
-        
+            .Where(type => type.IsAssignableModule());
+
         // 根据继承的接口注入相对应的生命周期
         foreach (var t in types)
         {
@@ -75,7 +73,24 @@ public static class DependencyExtensions
         {
             return type.GetInterfaces().Where(x => x.Name.EndsWith(type.Name))?.FirstOrDefault();
         }
-        
+
         return type.GetInterfaces().Where(x => x == exposeServices.Type)?.FirstOrDefault();
+    }
+
+    public static bool IsAssignableModule(this Type type)
+    {
+        if (type.Attributes.HasFlag(TypeAttributes.Abstract) || type.Attributes.HasFlag(TypeAttributes.Interface))
+        {
+            return false;
+        }
+
+        if (typeof(ISingletonDependency).IsAssignableFrom(type) ||
+                           typeof(IScopedDependency).IsAssignableFrom(type) ||
+                           typeof(ITransientDependency).IsAssignableFrom(type))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
