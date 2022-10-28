@@ -77,8 +77,20 @@ public static class DependencyExtensions
         return type.GetInterfaces().Where(x => x == exposeServices.Type)?.FirstOrDefault();
     }
 
+    /// <summary>
+    /// 是否支持注入
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public static bool IsAssignableModule(this Type type)
     {
+        var disabledInjectAttribute = type.GetCustomAttribute<DisabledInjectAttribute>();
+
+        if (disabledInjectAttribute?.Disabled == true)
+        {
+            return false;
+        }
+
         if (type.Attributes.HasFlag(TypeAttributes.Abstract) || type.Attributes.HasFlag(TypeAttributes.Interface))
         {
             return false;
