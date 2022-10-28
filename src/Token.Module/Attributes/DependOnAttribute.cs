@@ -2,6 +2,9 @@
 
 namespace Token.Module.Attributes;
 
+/// <summary>
+/// 模块依赖
+/// </summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class DependOnAttribute : Attribute
 {

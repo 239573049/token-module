@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Token.Module.Extensions;
 
@@ -12,6 +11,4 @@ public static class TokenServiceExtensions
     public static IConfiguration? GetConfiguration(this IServiceCollection services) =>
         services.BuildServiceProvider().GetService<IConfiguration>();
 
-    public static ILoggerFactory? GetLoggerFactory(IServiceCollection services) =>
-        services.BuildServiceProvider().GetService<ILoggerFactory>();
 }

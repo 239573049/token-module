@@ -2,6 +2,9 @@
 
 namespace Token.Module.Attributes;
 
+/// <summary>
+/// 指定注入实现
+/// </summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class ExposeServicesAttribute : Attribute
 {
