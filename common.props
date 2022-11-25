@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
-		<PackageVersion>1.3.3</PackageVersion>
+		<PackageVersion>1.3.4</PackageVersion>
 		<Authors>Token</Authors>
 		<Company>Token</Company>
 		<Product>Token</Product>
