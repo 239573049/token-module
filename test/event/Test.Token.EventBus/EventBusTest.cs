@@ -19,15 +19,20 @@ public class EventBusTest
         var loadEventBus = serviceProvider.GetRequiredService<ILoadEventBus<string>>();
         var keyEventBus = serviceProvider.GetRequiredService<IKeyLoadEventBus>();
 
+
+        await loadEventBus.PushAsync("测试事件总线处理");
+        await loadEventBus.PushAsync("测试事件总线处理");
+        await loadEventBus.PushAsync("测试事件总线处理");
+        await loadEventBus.PushAsync("测试事件总线处理");
+        await loadEventBus.PushAsync("测试事件总线处理");
+
         keyEventBus.Subscription("demo", (x) =>
         {
-            
+
         });
 
         await keyEventBus.PushAsync("demo", "测试");
-        
-        await loadEventBus.PushAsync("测试事件总线处理");
 
-        await Task.Delay(1000);
+        await Task.Delay(100000);
     }
 }

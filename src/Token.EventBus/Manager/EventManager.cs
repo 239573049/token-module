@@ -1,39 +1,33 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Channels;
-using Microsoft.Extensions.Options;
+using System.Collections.Concurrent;
+using Token.Events;
 using Token.Handlers;
-using Token.Options;
 
 namespace Token.Manager;
 
 public class EventManager<TEntity> : IDisposable where TEntity : class
 {
     private bool _disposable = false;
-
-    private readonly Channel<TEntity> _queue;
+    private readonly ConcurrentQueue<TEntity> _queue;
     private readonly IServiceProvider _serviceProvider;
+
+    public readonly TriggerEvent.EventExceptionHandler<TEntity>? EventExceptionHandler;
 
     public EventManager(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
 
-        var eventBusOption = serviceProvider.GetService<IOptions<EventBusOption>>()?.Value ?? new EventBusOption();
-
-        _queue = Channel.CreateBounded<TEntity>(eventBusOption.Capacity);
-        Start();
+        _queue = new ConcurrentQueue<TEntity>();
     }
 
     private void Start()
     {
-        _ = Task.Factory.StartNew(async () =>
+        _ = Task.Factory.StartNew(() =>
         {
-            while (!_disposable)
+            if (!_disposable && _queue.TryDequeue(out var result))
             {
-                var result = await _queue.Reader.ReadAsync();
-
                 Dequeue(result);
             }
-
         });
     }
 
@@ -42,8 +36,18 @@ public class EventManager<TEntity> : IDisposable where TEntity : class
         _ = Task.Run(async () =>
         {
             var loadEventHandler = _serviceProvider.GetService<ILoadEventHandler<TEntity>>();
-
-            await loadEventHandler.HandleEventAsync(entity);
+            try
+            {
+                await loadEventHandler.HandleEventAsync(entity);
+            }
+            catch (Exception e)
+            {
+                var result = EventExceptionHandler?.Invoke(entity, e);
+                if (result == false)
+                {
+                    throw;
+                }
+            }
         });
     }
 
@@ -52,9 +56,12 @@ public class EventManager<TEntity> : IDisposable where TEntity : class
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public async Task EnqueueAsync(TEntity entity)
+    public void Enqueue(TEntity entity)
     {
-        await _queue.Writer.WriteAsync(entity);
+        _queue.Enqueue(entity);
+
+        // 当数据入队成功启动消费
+        Start();
     }
 
     public void Dispose()
