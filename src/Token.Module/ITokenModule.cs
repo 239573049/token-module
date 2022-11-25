@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Token.Module;
+namespace Token;
 
 public interface ITokenModule
 {

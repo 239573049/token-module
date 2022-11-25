@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using System;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Token.Module;
+namespace Token;
 
 public abstract class TokenModule : ITokenModule
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Token.Module.Attributes;
+namespace Token.Attributes;
 
 /// <summary>
 /// 指定注入实现

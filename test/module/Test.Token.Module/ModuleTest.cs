@@ -1,4 +1,4 @@
-using Token.Module.Extensions;
+using Token.Extensions;
 
 namespace Test.Token.Module;
 

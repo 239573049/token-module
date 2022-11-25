@@ -1,4 +1,4 @@
-namespace Token.Module.Dependencys;
+namespace Token.Dependency;
 
 /// <summary>
 /// Singleton 单例生命周期 

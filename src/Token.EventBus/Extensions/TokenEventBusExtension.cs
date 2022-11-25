@@ -1,28 +1,17 @@
-using Microsoft.Extensions.DependencyInjection;
-using Token.EventBus.EventBus;
-using Token.EventBus.Handlers;
-using Token.EventBus.KeyEventBus;
-using Token.Module;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Token.Events;
+using Token.Manager;
 
-namespace Token.EventBus.Extensions;
+namespace Token.Extensions;
 
 public static class TokenEventBusExtension
 {
-    public static void AddTokenEventBus(this IServiceCollection services)
+    public static void AddEventBus(this IServiceCollection services)
     {
-        services.AddSingleton(typeof(IKeyLocalEventBus<>), typeof(KeyLocalEventBus<>));
-        
-        var service = services.BuildServiceProvider().GetService<List<Tuple<ITokenModule, int>>>();
+        services.AddSingleton(typeof(EventManager<>));
 
-        var eventTypes = new EventTypes();
-        
-        var types = service?.Where(x => x.Item1.GetType() != typeof(TokenEventBusModule))
-            .Select(x => x.Item1.GetType().Assembly).Distinct()
-            .SelectMany(x => x.GetTypes()).Where(x => typeof(IEventHandler).IsAssignableFrom(x)).ToList();
+        services.AddSingleton(typeof(ILoadEventBus<>), typeof(LoadEventBus<>));
 
-        eventTypes.AddEventHandlerRange(types);
-
-        services.AddSingleton(eventTypes);
-        
+        services.AddSingleton<IKeyLoadEventBus, KeyLoadEventBus>();
     }
 }

@@ -1,9 +1,8 @@
-using Token.EventBus.Handlers;
-using Token.Module.Dependencys;
+using Token.Handlers;
 
 namespace Test.Token.EventBus;
 
-public class DemoEventHandler : ILocalEventHandler<string>, ITransientDependency
+public class DemoLoadEventHandler : ILoadEventHandler<string>
 {
     public Task HandleEventAsync(string eventData)
     {

@@ -6,6 +6,7 @@
 ## 介绍
 
 简化本地事件总线方法
+LoadEventBus实现采用Channel实现本地mq
 
 ## 使用教程
 
@@ -19,11 +20,12 @@ services.AddEventBus();
 
 ```csharp
 // 获取事件总线的接口
-var distributedEventBus = services.GetService<IDistributedEventBus<string>>();
+var keyLoadEventBus = services.GetService<IKeyLoadEventBus>();
 // 定义字符串类型的事件总线处理方法
-distributedEventBus?.Subscribe("key",(data) =>
+keyLoadEventBus?.Subscribe("key",(data) =>
 {
-    Console.WriteLine(data);
+    var result = data as string;
+    Console.WriteLine(result);
 });
 // 提交字符串事件总线任务
 distributedEventBus?.PublishAsync("key","测试内容");
@@ -43,7 +45,7 @@ public class TestEto
 .....
 
 // 定义事件总线处理
-public class EventTestEvent : ILocalEventHandler<Test>, ITransientDependency
+public class EventTestEvent : ILoadEventHandler<Test>, ITransientDependency
 {
     public Task HandleEventAsync(Test eventData)
     {
@@ -56,9 +58,9 @@ public class EventTestEvent : ILocalEventHandler<Test>, ITransientDependency
 ·······
 
         // 在DI容器中获取到ILocalEventBus
-        var push = app.ApplicationServices.GetRequiredService<ILocalEventBus>();
+        var push = app.ApplicationServices.GetRequiredService<ILoadEventBus<Test>>();
         // 发布一个事件
-        await push.PublishAsync(new Test()
+        await push.PushAsync(new Test()
         {
             Name = "asd"
         });

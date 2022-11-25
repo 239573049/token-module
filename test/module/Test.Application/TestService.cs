@@ -1,6 +1,8 @@
-﻿namespace Test.Application
+﻿using Token.Dependency;
+
+namespace Test.Application
 {
-    public abstract class TestService :Token.Module.Dependencys.ITransientDependency
+    public abstract class TestService :ITransientDependency
     {
     }
 }

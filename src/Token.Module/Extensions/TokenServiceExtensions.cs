@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Token.Module.Extensions;
+namespace Token.Extensions;
 
 public static class TokenServiceExtensions
 {

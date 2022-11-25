@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Token.Module.Attributes;
+namespace Token.Attributes;
 
 /// <summary>
 /// 模块依赖

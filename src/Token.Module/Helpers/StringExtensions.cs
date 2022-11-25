@@ -1,4 +1,4 @@
-namespace Token.Module.Helpers;
+namespace Token.Helpers;
 
 /// <summary>
 /// 字符串扩展方法

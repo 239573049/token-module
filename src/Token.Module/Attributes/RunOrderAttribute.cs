@@ -1,6 +1,6 @@
 using System;
 
-namespace Token.Module.Attributes;
+namespace Token.Attributes;
 
 /// <summary>
 /// 标记模块执行顺序 小=》大

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Token.Module.Attributes;
+namespace Token.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class DisabledInjectAttribute : Attribute

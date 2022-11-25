@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
-using Token.Module.Attributes;
-using Token.Module.Helpers;
+using Microsoft.Extensions.DependencyInjection;
+using Token.Attributes;
 
-namespace Token.Module.Extensions;
+namespace Token.Extensions;
 
 public static class ServiceCollectionApplicationExtensions
 {

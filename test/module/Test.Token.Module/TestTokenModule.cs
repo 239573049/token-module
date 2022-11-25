@@ -1,4 +1,5 @@
-using Token.Module.Attributes;
+using Token;
+using Token.Attributes;
 
 namespace Test.Token.Module;
 

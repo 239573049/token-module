@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Token;
 using Token.Module;
 
 namespace Test.Application;

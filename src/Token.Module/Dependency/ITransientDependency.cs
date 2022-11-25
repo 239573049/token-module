@@ -1,4 +1,4 @@
-namespace Token.Module.Dependencys;
+namespace Token.Dependency;
 
 /// <summary>
 /// Transient 瞬时生命周期

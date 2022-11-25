@@ -1,4 +1,4 @@
-namespace Token.Module.Dependencys;
+namespace Token.Dependency;
 
 /// <summary>
 /// Scoped 区域生命周期

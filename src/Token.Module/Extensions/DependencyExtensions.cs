@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Token.Module.Attributes;
-using Token.Module.Dependencys;
+using Token.Attributes;
+using Token.Dependency;
 
-namespace Token.Module.Extensions;
+namespace Token.Extensions;
 
 public static class DependencyExtensions
 {

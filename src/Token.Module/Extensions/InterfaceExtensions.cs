@@ -1,6 +1,6 @@
 using System;
 
-namespace Token.Module.Extensions;
+namespace Token.Extensions;
 
 public static class InterfaceExtensions
 {
