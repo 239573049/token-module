@@ -102,7 +102,7 @@ public class DemoLoadEventHandler : ILoadEventHandler<string>
 }
 ```
 
-然后在讲当前服务注入到容器中 
+然后在将当前服务注入到容器中 
 
 ```c#
 services.AddTransient(typeof(ILoadEventHandler<string>),typeof(DemoLoadEventHandler));
