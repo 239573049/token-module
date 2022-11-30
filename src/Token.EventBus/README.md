@@ -8,7 +8,7 @@
 简化本地事件总线方法
 LoadEventBus实现采用Channel实现本地mq
 
-## 使用教程
+# 使用教程
 
 注入事件总线
 
@@ -67,9 +67,7 @@ public class EventTestEvent : ILoadEventHandler<Test>, ITransientDependency
 
 ```
 
-
-
-## 本地事件总线实现原理
+# 本地事件总线实现原理
 
 ## 第一步注入本地事件总线服务
 
