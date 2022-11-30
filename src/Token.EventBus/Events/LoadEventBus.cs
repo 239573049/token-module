@@ -13,7 +13,7 @@ public class LoadEventBus<TEntity> : ILoadEventBus<TEntity> where TEntity : clas
 
     public async Task PushAsync(TEntity entity)
     {
-        _eventManager.Enqueue(entity);
+        _eventManager.EnqueueAsync(entity);
 
         await Task.CompletedTask;
     }
