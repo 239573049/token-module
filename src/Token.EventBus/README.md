@@ -8,7 +8,7 @@
 简化本地事件总线方法
 LoadEventBus实现采用Channel实现本地mq
 
-## 使用教程
+# 使用教程
 
 注入事件总线
 
@@ -67,9 +67,7 @@ public class EventTestEvent : ILoadEventHandler<Test>, ITransientDependency
 
 ```
 
-
-
-## 本地事件总线实现原理
+# 本地事件总线实现原理
 
 ## 第一步注入本地事件总线服务
 
@@ -83,7 +81,8 @@ services.AddEventBus();
 
 ## 第二步订阅事件
 
-我们实现存在了一个事件处理器比如下代码;这个就是我们的本地事件处理器了，其实就是注入绑定 ILoadEventHandler<string> 提供了HandleEventAsync()方法回调 DemoLoadEventHandler是实现接口的实现类
+我们实现存在了一个事件处理器比如下代码;这个就是我们的本地事件处理器了，其实就是注入绑定 `ILoadEventHandler<string>` 提供了`HandleEventAsync()`方法回调 `DemoLoadEventHandler`是实现接口的实现类
+实现了`HandleEventAsync`方法在内部就可以写具体业务了
 
 ```c#
 using Token.Handlers;
@@ -101,7 +100,7 @@ public class DemoLoadEventHandler : ILoadEventHandler<string>
 }
 ```
 
-然后在讲当前服务注入到容器中 
+然后在将当前服务注入到容器中 
 
 ```c#
 services.AddTransient(typeof(ILoadEventHandler<string>),typeof(DemoLoadEventHandler));
@@ -118,7 +117,7 @@ await loadEventBus.PushAsync("发布事件");
 
 这样就完成了事件的发布
 
-在`loadEventBus.PushAsync("发布事件")`内部其实是讲数据添加到 `EventManager`中，`EventManager`内部实现是由`Channel`实现的一个当前线程的本地MQ 下面代码是EventManager 实现
+在`loadEventBus.PushAsync("发布事件")`内部其实是将数据添加到 `EventManager`中，`EventManager`内部实现是由`Channel`实现的一个当前线程的本地MQ 下面代码是EventManager 实现
 
 ```c#
 using Microsoft.Extensions.DependencyInjection;
