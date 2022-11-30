@@ -118,7 +118,7 @@ await loadEventBus.PushAsync("发布事件");
 
 这样就完成了事件的发布
 
-在`loadEventBus.PushAsync("发布事件")`内部其实是讲数据添加到 `EventManager`中，`EventManager`内部实现是由`Channel`实现的一个当前线程的本地MQ 下面代码是EventManager 实现
+在`loadEventBus.PushAsync("发布事件")`内部其实是将数据添加到 `EventManager`中，`EventManager`内部实现是由`Channel`实现的一个当前线程的本地MQ 下面代码是EventManager 实现
 
 ```c#
 using Microsoft.Extensions.DependencyInjection;
