@@ -83,7 +83,8 @@ services.AddEventBus();
 
 ## 第二步订阅事件
 
-我们实现存在了一个事件处理器比如下代码;这个就是我们的本地事件处理器了，其实就是注入绑定 ILoadEventHandler<string> 提供了HandleEventAsync()方法回调 DemoLoadEventHandler是实现接口的实现类
+我们实现存在了一个事件处理器比如下代码;这个就是我们的本地事件处理器了，其实就是注入绑定 `ILoadEventHandler<string>` 提供了`HandleEventAsync()`方法回调 `DemoLoadEventHandler`是实现接口的实现类
+实现了`HandleEventAsync`方法在内部就可以写具体业务了
 
 ```c#
 using Token.Handlers;
