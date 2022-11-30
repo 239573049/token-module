@@ -204,3 +204,8 @@ public class EventManager<TEntity> : IDisposable where TEntity : class
 ```
 
 当`loadEventBus.PushAsync("发布事件")`以后数据将添加到`_queue`队列中，然后在Start方法里面存在读取`_queue`队列的数据，然后在通过依赖注入，将数据传递到订阅者。这整个流程就是mq的生产 =》 消费 
+
+
+# 流程图
+
+![流程图](eventbus.png)
